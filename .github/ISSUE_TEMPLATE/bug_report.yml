@@ -1,0 +1,46 @@
+name: Bug Report
+description: Report an Issue or Bug
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the following information to help us resolve your issue.
+  - type: textarea
+    attributes:
+      label: Description
+      description: Provide a detailed description of the issue you are facing.
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps To Reproduce
+      description: Provide detailed steps to reproduce your issue. If necessary, please provide a GitHub repository to demonstrate your issue.
+    validations:
+      required: true
+  - type: input
+    id: laravel-version
+    attributes:
+      label: Laravel Version
+      description: What version of Laravel Package are you running?
+      placeholder: v11.0.0
+    validations:
+      required: true
+  - type: input
+    id: laravel-passport-version
+    attributes:
+      label: Laravel Passport Version
+      description: What version of Laravel Passport Package are you running?
+      placeholder: v11.0.0
+    validations:
+      required: true
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP Version
+      description: What version of PHP are you running?
+      placeholder: 8.3.0
+    validations:
+      required: true
