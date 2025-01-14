@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/xcoorp/laravel-passport-introspection/compare/v1.0.1...v1.0.2) (2025-01-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#30](https://github.com/xcoorp/laravel-passport-introspection/issues/30)) ([f636ace](https://github.com/xcoorp/laravel-passport-introspection/commit/f636acee273a7e0547e2cb8884653f733424766b))
+* **deps:** pin dependencies ([#26](https://github.com/xcoorp/laravel-passport-introspection/issues/26)) ([c7caad5](https://github.com/xcoorp/laravel-passport-introspection/commit/c7caad57ebe441bc3a6a547349aa816425874308))
+
 ## [1.0.1](https://github.com/xcoorp/laravel-passport-introspection/compare/v1.0.0...v1.0.1) (2024-09-04)
 
 
