@@ -1,0 +1,49 @@
+{
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+    "packages": {
+        ".": {
+            "changelog-path": "CHANGELOG.md",
+            "release-type": "php",
+            "prerelease": false,
+            "target-branch": "main",
+            "include-v-in-tag": true,
+            "pull-request-header": "A new version is ready to be released 🚀 ",
+            "bump-minor-pre-major": true,
+            "include-component-in-tag": false
+        }
+    },
+    "changelog-sections": [
+        {
+            "section": "✨ Features",
+            "type": "feat"
+        },
+        {
+            "section": "🐛 Bugfixes",
+            "type": "fix"
+        },
+        {
+            "section": "🎨 Styles",
+            "type": "style"
+        },
+        {
+            "section": "⬆️ Dependency updates",
+            "type": "deps"
+        },
+        {
+            "section": "📜 Documentation",
+            "type": "docs"
+        },
+        {
+            "section": "🚀 Releases",
+            "type": "release"
+        },
+        {
+            "section": "👽 Miscellaneous",
+            "type": "chore"
+        },
+        {
+            "section": "♻️ OPS",
+            "type": "ci"
+        }
+    ]
+}
