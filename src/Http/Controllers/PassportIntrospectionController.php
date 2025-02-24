@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Laravel\Passport\Exceptions\AuthenticationException;
 use Laravel\Passport\Passport;
+use XCoorp\PassportIntrospection\Enums\CredentialType;
 use XCoorp\PassportIntrospection\Http\Requests\PassportIntrospectionRequest;
 use XCoorp\PassportIntrospection\Http\Resources\PassportIntrospectionResource;
 
@@ -63,9 +64,21 @@ class PassportIntrospectionController extends BaseController
         return new PassportIntrospectionResource([
             'active' => $token->revoked === false,
             'client_id' => $accessToken?->client_id,
-            'username' => $accessToken?->user_id,
+            'username' => $accessToken?->user?->email ? $accessToken->user->email : null,
+            'sub' => $accessToken?->user_id,
             'scope' => implode(' ', $accessToken?->scopes),
+            'credential_type' => $client?->personal_access_client ? CredentialType::PersonalAccess : (
+                $client?->password_client ? CredentialType::Password : (
+                    !$client?->secret ? CredentialType::PKCE : (
+                        $client?->redirect && trim($client->redirect) == '' ? CredentialType::ClientCredentials : (
+                            $client?->redirect && trim($client->redirect) !== '' ? CredentialType::AuthorizationCode : CredentialType::Unknown
+                        )
+                    )
+                )
+            ),
             'exp' => $token?->expires_at?->getTimestamp(),
+            'iat' => $token?->created_at?->getTimestamp(),
+            'nbf' => $token?->created_at?->getTimestamp(),
         ]);
     }
 }
