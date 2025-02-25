@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0-alpha.1](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha...v2.0.0-alpha.1) (2025-02-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **containers:** move to laravel dependency injection
+
+### ✨ Features
+
+* **containers:** move to laravel dependency injection ([0906cc0](https://github.com/xcoorp/laravel-passport-introspection/commit/0906cc08300eb0a26241d4c398d22db18e9bbc1b))
+
 ## [2.0.0-alpha](https://github.com/xcoorp/laravel-passport-introspection/compare/v1.0.2...v2.0.0-alpha) (2025-02-24)
 
 
