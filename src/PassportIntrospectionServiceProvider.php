@@ -4,20 +4,23 @@ namespace XCoorp\PassportIntrospection;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use XCoorp\PassportIntrospection\Factories\IntrospectionResponseFactory;
+use XCoorp\PassportIntrospection\Contracts\IntrospectionResponseFactory as IntrospectionResponseFactoryContract;
 
 class PassportIntrospectionServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any package services.
-     */
+    public function register(): void
+    {
+        $this->app->bind(IntrospectionResponseFactoryContract::class, function () {
+            return new IntrospectionResponseFactory();
+        });
+    }
+
     public function boot(): void
     {
         $this->configureRoutes();
     }
 
-    /**
-     * Configure the routes offered by the application.
-     */
     protected function configureRoutes(): void
     {
         if (PassportIntrospection::$registersRoutes) {

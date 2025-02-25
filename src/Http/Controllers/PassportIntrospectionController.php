@@ -7,7 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Laravel\Passport\Exceptions\AuthenticationException;
 use Laravel\Passport\Passport;
-use XCoorp\PassportIntrospection\Enums\CredentialType;
+use XCoorp\PassportIntrospection\Contracts\IntrospectionResponseFactory;
 use XCoorp\PassportIntrospection\Http\Requests\PassportIntrospectionRequest;
 use XCoorp\PassportIntrospection\Http\Resources\PassportIntrospectionResource;
 
@@ -16,9 +16,14 @@ class PassportIntrospectionController extends BaseController
     use AuthorizesRequests;
     use ValidatesRequests;
 
+    protected IntrospectionResponseFactory $responseFactory;
+
+    public function __construct(IntrospectionResponseFactory $responseFactory = null)
+    {
+        $this->responseFactory = $responseFactory ?? app(IntrospectionResponseFactory::class);
+    }
+
     /**
-     * Handle a request to introspect a token.
-     *
      * @throws AuthenticationException
      */
     public function introspect(PassportIntrospectionRequest $request): PassportIntrospectionResource
@@ -27,7 +32,7 @@ class PassportIntrospectionController extends BaseController
         // to be valid and of the valid scope, but it does not check if it is actually from a client
         // credential only client. So we need to check that here, since this endpoint is only for
         // client credentials grant clients. NOTE: Signature, expiration and validity checks are not needed, since the middleware
-        // already does that.
+        // already does that for us.
         $jwtPayload = json_decode(base64_decode(explode('.', $request->bearerToken())[1]), true);
         if (! $jwtPayload || ! isset($jwtPayload['jti'])) {
             throw new AuthenticationException();
@@ -41,9 +46,7 @@ class PassportIntrospectionController extends BaseController
         $data = $request->validated();
 
         if (! isset($data['token'])) {
-            return new PassportIntrospectionResource([
-                'active' => false,
-            ]);
+            return $this->responseFactory->createResponse(null, null);
         }
 
         $type = $data['token_type_hint'] ?? 'access_token';
@@ -55,30 +58,6 @@ class PassportIntrospectionController extends BaseController
             $accessToken = Passport::token()->where('id', $token?->access_token_id)->first();
         }
 
-        if (! $token) {
-            return new PassportIntrospectionResource([
-                'active' => false,
-            ]);
-        }
-
-        return new PassportIntrospectionResource([
-            'active' => $token->revoked === false,
-            'client_id' => $accessToken?->client_id,
-            'username' => $accessToken?->user?->email ? $accessToken->user->email : null,
-            'sub' => $accessToken?->user_id,
-            'scope' => implode(' ', $accessToken?->scopes),
-            'credential_type' => $client?->personal_access_client ? CredentialType::PersonalAccess : (
-                $client?->password_client ? CredentialType::Password : (
-                    !$client?->secret ? CredentialType::PKCE : (
-                        $client?->redirect && trim($client->redirect) == '' ? CredentialType::ClientCredentials : (
-                            $client?->redirect && trim($client->redirect) !== '' ? CredentialType::AuthorizationCode : CredentialType::Unknown
-                        )
-                    )
-                )
-            ),
-            'exp' => $token?->expires_at?->getTimestamp(),
-            'iat' => $token?->created_at?->getTimestamp(),
-            'nbf' => $token?->created_at?->getTimestamp(),
-        ]);
+        return $this->responseFactory->createResponse($token, $accessToken);
     }
 }

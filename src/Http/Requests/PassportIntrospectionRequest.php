@@ -22,7 +22,7 @@ class PassportIntrospectionRequest extends FormRequest
     protected function introspect(): array
     {
         return [
-            'token' => 'nullable|string',
+            'token' => 'string',
             'token_type_hint' => 'nullable|string|in:access_token,refresh_token',
         ];
     }
