@@ -22,7 +22,6 @@ class PassportIntrospectionResource extends JsonResource
             'client_id' => $this->when(isset($this['client_id']), fn () => $this['client_id']),
             'username' => $this->when(isset($this['username']), fn () => $this['username']),
             'scope' => $this->when(isset($this['scope']), fn () => $this['scope']),
-            'credential_type' => $this->when(isset($this['credential_type']), fn () => $this['credential_type']->value),
             'token_type' => 'bearer',
             'sub' => $this->when(isset($this['sub']), fn () => $this['sub']),
             'exp' => $this->when(isset($this['exp']), fn () => $this['exp']),
