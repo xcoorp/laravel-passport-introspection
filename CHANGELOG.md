@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0-alpha.3](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2025-05-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **response:** remove credential type
+
+### 🐛 Bugfixes
+
+* **response:** remove credential type ([b50360b](https://github.com/xcoorp/laravel-passport-introspection/commit/b50360b60225c0199112a62cfc4a47b2034c3f63))
+
 ## [2.0.0-alpha.2](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2025-05-09)
 
 
