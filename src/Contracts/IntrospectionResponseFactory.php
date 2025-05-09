@@ -2,8 +2,6 @@
 
 namespace XCoorp\PassportIntrospection\Contracts;
 
-use Laravel\Passport\Token;
-
 interface IntrospectionResponseFactory
 {
     /**
