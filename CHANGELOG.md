@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.0.0-alpha.2](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2025-05-09)
+
+
+### 🐛 Bugfixes
+
+* **deps:** passport force update method calls to v13 ([c329e75](https://github.com/xcoorp/laravel-passport-introspection/commit/c329e75a05e007e4be994741810c9c934990ca9c))
+* **introspection:** fix introspection result ([68a5c23](https://github.com/xcoorp/laravel-passport-introspection/commit/68a5c2376828626d81809e6e6150290be96832ae))
+
+
+### 👽 Miscellaneous
+
+* **deps:** add php8.4 support ([8dad812](https://github.com/xcoorp/laravel-passport-introspection/commit/8dad812fbf3e9fcaeba48f1f1a52ebe6875bab7d))
+* **deps:** bump package versions ([b893291](https://github.com/xcoorp/laravel-passport-introspection/commit/b89329103cb9fb61be26ce8647d22b2c0e043c98))
+
 ## [2.0.0-alpha.1](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha...v2.0.0-alpha.1) (2025-02-25)
 
 
