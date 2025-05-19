@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0-alpha.4](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2025-05-19)
+
+
+### 🐛 Bugfixes
+
+* **ci:** allow manual dispatch release ([57ec743](https://github.com/xcoorp/laravel-passport-introspection/commit/57ec743a61debc6ce68f86090fe77055a4bf6c25))
+
 ## [2.0.0-alpha.3](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2025-05-09)
 
 
