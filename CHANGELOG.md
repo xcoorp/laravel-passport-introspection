@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0-alpha.5](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2026-02-26)
+
+
+### 👽 Miscellaneous
+
+* **deps:** lock file maintenance ([6545607](https://github.com/xcoorp/laravel-passport-introspection/commit/6545607c9c7789eb1df6793714215f179106f88a))
+
 ## [2.0.0-alpha.4](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2025-05-19)
 
 
