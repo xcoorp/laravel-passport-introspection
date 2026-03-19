@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0-alpha.6](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2026-03-19)
+
+
+### 👽 Miscellaneous
+
+* **deps:** add laravel 13 support ([e227a6f](https://github.com/xcoorp/laravel-passport-introspection/commit/e227a6f2ed519a8d0ca7c142e5257b12d26a2d2c))
+
 ## [2.0.0-alpha.5](https://github.com/xcoorp/laravel-passport-introspection/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2026-02-26)
 
 
